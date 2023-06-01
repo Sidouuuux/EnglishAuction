@@ -4,9 +4,6 @@ const { ethers, run, network } = require("hardhat")
 // async main
 async function main(params) {
     let ContractFactory
-    let contractUSDT
-    let contractUSDC
-    let contractBUSD
 
     ContractFactory = await ethers.getContractFactory(params.name)
 
