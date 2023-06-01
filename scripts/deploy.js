@@ -30,7 +30,7 @@ const verify = async (contractAddress, args) => {
 }
 
 const params = {
-    name: "Netflix",
+    name: "EnglishAuction",
     address: "",
     args: [],
     verify: true,
