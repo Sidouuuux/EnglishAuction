@@ -65,7 +65,6 @@ describe("EnglishAuction", function () {
 
         it("should allow the seller to end the auction and transfer the NFT and highest bid amount", async function () {
             await nft.connect(addr1).approve(englishAuction.address, 1)
-            // await nft.connect(addr2).approve(englishAuction.address, 1);
 
             const startingBid = ethers.utils.parseEther("1")
             const duration = 3600 // 1 hour
@@ -297,7 +296,6 @@ describe("EnglishAuction", function () {
             expect(auction.highestBid).to.equal(startingBid)
         })
         it("should not allow creating an auction for an NFT not owned by the caller", async function () {
-            // await nft.connect(addr1).approve(englishAuction.address, 1);
 
             const startingBid = ethers.utils.parseEther("1")
             const duration = 3600 // 1 hour
@@ -313,7 +311,7 @@ describe("EnglishAuction", function () {
             const bidAmount = ethers.utils.parseEther("1")
             await expect(
                 englishAuction.connect(addr1).placeBid(0, { value: bidAmount })
-            ).to.be.revertedWith("auction does not exist")
+            ).to.be.revertedWith("Auction does not exist")
         })
 
         it("should not allow placing a bid after the auction has ended", async function () {
@@ -337,7 +335,6 @@ describe("EnglishAuction", function () {
     })
 
     describe("Events", function () {
-        // ...
 
         it("should emit AuctionCreated event when creating an auction", async function () {
             await nft.connect(addr1).approve(englishAuction.address, 1)
@@ -429,7 +426,5 @@ describe("EnglishAuction", function () {
                 .to.emit(englishAuction, "BidderWithdrawn")
                 .withArgs(addr2.address, bidAmount)
         })
-
-        // ...
     })
 })
